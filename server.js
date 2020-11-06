@@ -1,6 +1,11 @@
 const express = require('express')
+const router = require('./router/router');
+const bodyParser = require('body-Parser');
 const app = express()
 const port = 3000
 
-app.get('/', (req, res) => res.send('Hello World!'))
-app.listen(port, () => console.log(`Example app listening on port port!`))
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: false }))
+router(app)
+
+server = app.listen(port, () => console.log(`Listening on http://localhost:${server.address().port}`))

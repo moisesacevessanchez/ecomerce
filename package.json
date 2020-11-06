@@ -1,22 +1,32 @@
 {
-  "name": "ecomerce",
-  "version": "1.0.0",
-  "description": "Un proyecto de un almacen online",
-  "main": "server.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+ssh://git@github.com/moisesacevessanchez/ecomerce.git"
-  },
-  "keywords": [
-    "almacen"
-  ],
-  "author": "Moises Aceves Sanchez",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/moisesacevessanchez/ecomerce/issues"
-  },
-  "homepage": "https://github.com/moisesacevessanchez/ecomerce#readme"
+    "name": "ecomerce",
+    "version": "1.0.0",
+    "description": "Un proyecto de un almacen online",
+    "main": "server.js",
+    "scripts": {
+        "start": "server",
+        "dev": "nodemon server"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+ssh://git@github.com/moisesacevessanchez/ecomerce.git"
+    },
+    "keywords": [
+        "almacen"
+    ],
+    "author": "Moises Aceves Sanchez",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/moisesacevessanchez/ecomerce/issues"
+    },
+    "homepage": "https://github.com/moisesacevessanchez/ecomerce#readme",
+    "devDependencies": {
+        "nodemon": "^2.0.6"
+    },
+    "dependencies": {
+        "body-parser": "^1.19.0",
+        "express": "^4.17.1",
+        "moment": "^2.29.1",
+        "mongoose": "^5.10.13"
+    }
 }
