@@ -15,14 +15,18 @@ const readProduct = async(filter) => {
 }
 
 const borrarProduct = async(id) => {
-    const result = await model.findOne({ _id: id });
-    result.remove()
+    const result = await model.findByIdAndRemove(id)
     return result
+}
 
+const actualizarProduct = async(id, update) => {
+    const result = await model.findByIdAndUpdate(id, update)
+    return result
 }
 
 module.exports = {
     saveProduct,
     readProduct,
-    borrarProduct
+    borrarProduct,
+    actualizarProduct
 }

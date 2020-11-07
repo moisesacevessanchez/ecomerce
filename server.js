@@ -12,6 +12,6 @@ router(app)
 
 server = app.listen(port, () => {
     console.log(`Listening on http://localhost:${server.address().port}`)
-    db.connect("mongodb+srv://moises:moises1981frasier@clases.uhn67.mongodb.net/ecomerce?retryWrites=true&w=majority", { useNewUrlParser: true, useUnifiedTopology: true })
+    db.connect("mongodb+srv://moises:moises1981frasier@clases.uhn67.mongodb.net/ecomerce?retryWrites=true&w=majority", { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false })
     console.log("Conectado a la tienda");
 })

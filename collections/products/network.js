@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router()
-const { postProduct, getProduct, deleteProduct } = require("./controller")
+const { postProduct, getProduct, deleteProduct, putProduct } = require("./controller")
 const { success, error } = require("../../router/response")
 
 router.post('/', (req, res) => {
@@ -42,9 +42,23 @@ router.delete("/:id", (req, res) => {
         })
 })
 
+router.put("/", (req, res) => {
+    let { id, tag, value } = req.query
 
-
-
-
+    // let name = req.query.name || null
+    // let brand = req.query.brand || null
+    // let description = req.query.description || null
+    // let size = req.query.size || null
+    // let price = req.query.price || null
+    // let stock = req.query.stock || null
+    // let image = req.query.image || null
+    putProduct(id, tag, value)
+        .then(data => {
+            success(req, res, data, 200)
+        })
+        .catch(e => {
+            error(req, res, e, 400)
+        })
+})
 
 module.exports = router
