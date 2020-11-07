@@ -24,7 +24,7 @@ router.get("/", (req, res) => {
     let name = req.query.name || null
     getProduct(name)
         .then(data => {
-            success(req, res, data, 200)
+            success(req, res, data, 200, "products")
         })
         .catch(e => {
             error(req, res, e, 400)

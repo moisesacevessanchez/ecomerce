@@ -1,11 +1,15 @@
 const express = require('express')
-const db = require('mongoose');
 const router = require('./router/router');
 const bodyParser = require('body-Parser');
-
+const path = require('path');
+const db = require('mongoose');
 const app = express()
 const port = 3000
 
+app.set("view engine", "pug")
+app.set("views", "views")
+
+app.use(express.static('public'));
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
 router(app)
