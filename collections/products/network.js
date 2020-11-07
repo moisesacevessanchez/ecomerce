@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router()
-const { postProduct, getProduct } = require("./controller")
+const { postProduct, getProduct, deleteProduct } = require("./controller")
 const { success, error } = require("../../router/response")
 
 router.post('/', (req, res) => {
@@ -23,6 +23,17 @@ router.post('/', (req, res) => {
 router.get("/", (req, res) => {
     let name = req.query.name || null
     getProduct(name)
+        .then(data => {
+            success(req, res, data, 200)
+        })
+        .catch(e => {
+            error(req, res, e, 400)
+        })
+})
+
+router.delete("/:id", (req, res) => {
+    let { id } = req.params
+    deleteProduct(id)
         .then(data => {
             success(req, res, data, 200)
         })

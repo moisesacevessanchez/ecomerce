@@ -1,5 +1,5 @@
 const moment = require('moment');
-const { saveProduct, readProduct } = require('./store');
+const { saveProduct, readProduct, borrarProduct } = require('./store');
 const postProduct = (name, description, size, brand, price, image, stock) => {
     return new Promise((resolve, reject) => {
         if (!name || !description || !size || !brand || !price || !image || !stock) {
@@ -25,7 +25,15 @@ const getProduct = (filter) => {
     });
 }
 
+const deleteProduct = (id) => {
+    return new Promise((resolve, reject) => {
+        //resolve(id)
+        resolve(borrarProduct(id))
+    });
+}
+
 module.exports = {
     postProduct,
-    getProduct
+    getProduct,
+    deleteProduct
 }
