@@ -1,5 +1,5 @@
 const moment = require('moment');
-const store = require('./store');
+const { saveProduct, readProduct } = require('./store');
 const postProduct = (name, description, size, brand, price, image, stock) => {
     return new Promise((resolve, reject) => {
         if (!name || !description || !size || !brand || !price || !image || !stock) {
@@ -7,19 +7,25 @@ const postProduct = (name, description, size, brand, price, image, stock) => {
         }
         const fullProducct = {
             name,
+            brand,
             description,
             size,
-            brand,
             price,
-            image,
             stock,
+            image,
             date: moment().format("LLLL"),
         }
+        resolve(saveProduct(fullProducct))
+    });
+}
 
-        resolve(fullProducct)
+const getProduct = (filter) => {
+    return new Promise((resolve, reject) => {
+        resolve(readProduct(filter))
     });
 }
 
 module.exports = {
     postProduct,
+    getProduct
 }

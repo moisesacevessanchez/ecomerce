@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router()
-const { postProduct } = require("./controller")
+const { postProduct, getProduct } = require("./controller")
 const { success, error } = require("../../router/response")
 
 router.post('/', (req, res) => {
@@ -18,8 +18,22 @@ router.post('/', (req, res) => {
         .catch(e => {
             error(req, res, e, 400)
         })
-
-
 })
+
+router.get("/", (req, res) => {
+    let name = req.query.name || null
+    getProduct(name)
+        .then(data => {
+            success(req, res, data, 200)
+        })
+        .catch(e => {
+            error(req, res, e, 400)
+        })
+})
+
+
+
+
+
 
 module.exports = router
