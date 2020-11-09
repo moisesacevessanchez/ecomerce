@@ -1,22 +1,30 @@
 extends layout.pug
 
+block nabvar
+  include nabvar.pug
+
+block hero
+  .hero
+    .hero-body
+      .container
+        .title Nuestros productos
+        
+
 block content
-  .hero.is-primary
-    .hero-body      
+  .container(style="flex:1;padding:50px 0;")
+    .columns.is-multiline
       each value in body
-        .card
-          .card-image
-            figure.image.is-4by3
-              img(src= value.image alt= value.brand)
-          .card-content
-            .media
-              .media-content                
-                  p.title.is-4.has-text-black= value.brand
-                  p.subtitle.is-6.has-text-black= value.name
-            .content
-              .media-right
-                p= value.description
-                p= value.size
-                p= value.stock
-                br
-                p= value.date
+        .column.is-one-quarter
+          .card
+            .card-image
+              figure.image(style="height:300px")              
+                img(src=value.image style="height: 100%; object-fit: cover")
+            .card-content
+              h1.title=`${value.brand} `
+              span.subtitle=`Size ${value.size}`
+                .subtitle= `${value.description}`
+              .button.is-fullwidth.is-link
+                span.icon
+                  i.fas.fa-shopping-cart
+                span Add to cart                
+                  strong= `$ ${value.price}`

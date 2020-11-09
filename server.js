@@ -1,21 +1,29 @@
 const express = require('express')
 const router = require('./router/router');
-const bodyParser = require('body-Parser');
-const path = require('path');
 const db = require('mongoose');
+const bodyParser = require('body-Parser');
 const app = express()
-const port = 3000
+const { config } = require('./config/index');
 
-app.set("view engine", "pug")
-app.set("views", "views")
+//mongoose
+const USER = encodeURIComponent(config.dbUser)
+const PASSWORD = encodeURIComponent(config.dbPassword)
+const MONGO_URI = `mongodb+srv://${USER}:${PASSWORD}${config.dbHost}${config.dbName}?retryWrites=true&w=majority`
 
+//midelwares
 app.use(express.static('public'));
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
+
+//router
 router(app)
 
-server = app.listen(port, () => {
+//view engine pug
+app.set("view engine", "pug")
+app.set("views", "views")
+
+server = app.listen(config.port, () => {
     console.log(`Listening on http://localhost:${server.address().port}`)
-    db.connect("mongodb+srv://moises:moises1981frasier@clases.uhn67.mongodb.net/ecomerce?retryWrites=true&w=majority", { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false })
-    console.log("Conectado a la tienda");
+    db.connect(MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false })
+    console.log("Conectado a DB");
 })

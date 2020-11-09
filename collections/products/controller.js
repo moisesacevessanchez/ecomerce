@@ -20,8 +20,8 @@ const postProduct = (name, description, size, brand, price, image, stock) => {
 }
 
 const getProduct = (filter) => {
-    return new Promise(async(resolve, reject) => {
-        const result = await readProduct(filter)
+    return new Promise((resolve, reject) => {
+        const result = readProduct(filter)
         if (result.length === 0) {
             resolve("Esta DB no contiene Productos")
         }
