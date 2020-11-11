@@ -1,0 +1,14 @@
+extends layout.pug
+
+block navbar
+  include navbar.pug
+
+block hero
+  .columns
+    .column.is-full
+      p.title= `Bienvenido ${body}`
+        
+
+block content
+  .container    
+      p=body
