@@ -13,16 +13,16 @@ html(lang="en")
           .container
             form(action="home" method="POST")
               .field(style='width: 30%;')
-                .label User Name
-                  .control.has-icons-left.has-icons-right
-                    input.input.is-link(name="name" type='text' placeholder='Text input' value='')
-                    span.icon.is-small.is-left
-                      i.fas.fa-user
-              .field(style='width: 30%;')
                 label.label Email
                 .control.has-icons-left.has-icons-right
                   input.input.is-link(name="mail" type='email' placeholder='Email input' value='')
                   span.icon.is-small.is-left
                     i.fas.fa-envelope
+              .field(style='width: 30%;')
+                label.label Password
+                  .control.has-icons-left.has-icons-right
+                    input.input.is-link(name="pass" type='password' placeholder='Text input' value='')
+                    span.icon.is-small.is-left
+                      i.fas.fa-user              
               .field              
                 button.button.is-link(type="submit") Login

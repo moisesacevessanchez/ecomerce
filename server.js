@@ -25,5 +25,5 @@ app.set("views", "views")
 server = app.listen(config.port, () => {
     console.log(`Listening on http://localhost:${server.address().port}`)
     db.connect(MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false })
-    console.log("Conectado a DB");
+    console.log("Conectado a DB Tienda");
 })
